@@ -1,15 +1,13 @@
 package TrabajoPracticoEspecial;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Libro extends Biblioteca {
 	private ArrayList<String> autores;
 	private int cantidadPaginas;
 	private String Editorial;
 	private int anioPublicacion;
+	private Set<String> palabrasClaves;
 
 	public Libro (int anioPublicacion, String Editorial, int cantidadPaginas, int id, String Titulo) {
 		super(id,Titulo);
@@ -17,6 +15,11 @@ public class Libro extends Biblioteca {
 		this.cantidadPaginas = cantidadPaginas;
 		this.Editorial = Editorial;
 		this.autores = new ArrayList<String>();
+		this.palabrasClaves = new HashSet<String>();
+	}
+
+	public void addPalabrasClaves(String s) {
+		this.palabrasClaves.add(s.toLowerCase());
 	}
 
 	public void addAutores(String s) {
@@ -47,13 +50,18 @@ public class Libro extends Biblioteca {
 	}
 
 	@Override
+	public Set<String> getPalabraClaves() {
+		return Collections.unmodifiableSet(this.palabrasClaves);
+	}
+
+	@Override
 	public int cantidadLibros() {
 		return 1;
 	}
 
 	@Override
 	public String toString(){
-		return ("Año" + this.getAnioPublicacion() + "- Titulo" + this.getTitulo() + "- Autores" + this.getAutores().toString() + "- Editorial" + this.getEditorial());
+		return ("(" + this.getAnioPublicacion() + ")" + " - " + this.getTitulo() + " - " + this.getAutores().toString() + " - " + this.getEditorial());
 	}
 
 	@Override
@@ -66,12 +74,16 @@ public class Libro extends Biblioteca {
 	}
 
 	@Override
-	public ArrayList<Biblioteca> copiaRestringida(CriterioBusqueda c) {
-		ArrayList<Biblioteca> librosBusqueda = new ArrayList<Biblioteca>();
+	public Biblioteca copiaRestringida(CriterioBusqueda c) {
 		if(c.cumple(this)) {
-			librosBusqueda.add(this);
+			Libro librosBusqueda = new Libro(this.getAnioPublicacion(), this.getEditorial(), this.cantidadPaginas, this.getId(), this.getTitulo());
+			for(String s: this.palabrasClaves)
+				librosBusqueda.addPalabrasClaves(s);
+			for(String s: this.autores)
+				librosBusqueda.addAutores(s);
+			return librosBusqueda;
 		}
-		return librosBusqueda;
+		return null;
 	}
 
 

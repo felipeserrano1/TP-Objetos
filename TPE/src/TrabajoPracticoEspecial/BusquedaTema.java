@@ -1,5 +1,7 @@
 package TrabajoPracticoEspecial;
 
+import java.util.ArrayList;
+
 public class BusquedaTema implements CriterioBusqueda {
     private String tema;
 
@@ -8,7 +10,11 @@ public class BusquedaTema implements CriterioBusqueda {
     }
 
     @Override
-    public boolean cumple (Biblioteca b) {
-        return b.getPalabraClaves().contains(this.tema.toLowerCase());
+    public boolean cumple(Libro l){
+        for(String s : l.getPalabraClaves()){
+            if(s.contains(this.tema.toLowerCase()))
+                return true;
+        }
+        return false;
     }
 }

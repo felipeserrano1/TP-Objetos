@@ -8,7 +8,7 @@ public class BusquedaCantidadPaginas implements CriterioBusqueda{
     }
 
     @Override
-    public boolean cumple (Biblioteca b) {
-        return ((Libro)b).getCantidadPaginas() < this.maxPalabras;
+    public boolean cumple (Libro l) {
+        return l.getCantidadPaginas() < this.maxPalabras;
     }
 }

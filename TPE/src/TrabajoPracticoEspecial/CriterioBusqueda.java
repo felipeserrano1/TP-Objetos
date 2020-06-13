@@ -1,5 +1,5 @@
 package TrabajoPracticoEspecial;
 
 public interface CriterioBusqueda {
-    public boolean cumple(Biblioteca b);
+    public boolean cumple(Libro l);
 }

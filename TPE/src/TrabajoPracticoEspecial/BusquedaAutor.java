@@ -8,7 +8,11 @@ public class BusquedaAutor implements CriterioBusqueda{
     }
 
     @Override
-    public boolean cumple(Biblioteca b) {
-        return ((Libro)b).getAutores().contains(this.autor.toLowerCase());
+    public boolean cumple(Libro l){
+        for(String s : l.getAutores()){
+            if(s.contains(this.autor.toLowerCase()))
+                return true;
+        }
+        return false;
     }
 }

@@ -1,19 +1,14 @@
 package TrabajoPracticoEspecial;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Biblioteca {
 	private int id;
 	private String titulo;
-	protected Set<String> palabrasClaves;
 
 	public Biblioteca(int id, String titulo) {
 		this.id = id;
-		this.titulo = titulo;
-		this.palabrasClaves = new HashSet<String>();
+		this.titulo = titulo.toLowerCase();
 	}
 
 	public int getId() {
@@ -32,17 +27,13 @@ public abstract class Biblioteca {
 		this.titulo = titulo;
 	}
 
-	public void addPalabrasClaves(String s){
-		palabrasClaves.add(s.toLowerCase());
-	}
-
-	public Set<String> getPalabraClaves() {
-		return palabrasClaves;
-	}
+	public abstract Set<String> getPalabraClaves();
 
 	public abstract int cantidadLibros();
 
-	public abstract ArrayList<Libro> buscar(Comparator condicion, CriterioBusqueda c);
+	public abstract List<Libro> buscar(Comparator condicion, CriterioBusqueda c);
 
-	public abstract ArrayList<Biblioteca> copiaRestringida(CriterioBusqueda c);
+	public abstract Biblioteca copiaRestringida(CriterioBusqueda c);
+
 }
+

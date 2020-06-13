@@ -8,7 +8,7 @@ public class BusquedaNot implements CriterioBusqueda {
     }
 
     @Override
-    public boolean cumple(Biblioteca b) {
-        return !(this.busqueda.cumple(b));
+    public boolean cumple(Libro l) {
+        return !(this.busqueda.cumple(l));
     }
 }

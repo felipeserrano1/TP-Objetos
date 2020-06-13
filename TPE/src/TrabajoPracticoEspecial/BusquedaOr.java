@@ -10,7 +10,7 @@ public class BusquedaOr implements CriterioBusqueda {
     }
 
     @Override
-    public boolean cumple(Biblioteca b) {
-        return this.busquedaA.cumple(b) || this.busquedaB.cumple(b);
+    public boolean cumple(Libro l) {
+        return this.busquedaA.cumple(l) || this.busquedaB.cumple(l);
     }
 }

@@ -1,17 +1,17 @@
 package TrabajoPracticoEspecial;
 
-import java.util.Comparator;
+public class OrdenamientoAnio extends Ordenamiento {
 
-public class OrdenamientoAnio implements Comparator<Libro> {
-    private OrdenamientoTitulo ordenamiento;
+    public OrdenamientoAnio() {
+        siguiente = null;
+    }
+
+    public OrdenamientoAnio(Ordenamiento o) {
+        siguiente = o;
+    }
 
     @Override
-    public int compare(Libro libro, Libro t1) {
-        if((libro.getAnioPublicacion() - t1.getAnioPublicacion()) == 0) {
-            return ordenamiento.compare(libro, t1);
-        }
-        else {
-            return (libro.getAnioPublicacion() - t1.getAnioPublicacion());
-        }
+    public int compararLibro(Libro l1, Libro l2) {
+        return (l1.getAnioPublicacion() - l2.getAnioPublicacion());
     }
 }

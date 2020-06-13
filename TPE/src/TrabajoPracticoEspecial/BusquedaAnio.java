@@ -8,7 +8,7 @@ public class BusquedaAnio implements CriterioBusqueda {
     }
 
     @Override
-    public boolean cumple(Biblioteca b) {
-        return ((Libro)b).getAnioPublicacion() > this.anio;
+    public boolean cumple(Libro l) {
+        return ((Libro)l).getAnioPublicacion() > this.anio;
     }
 }

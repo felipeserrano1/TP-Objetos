@@ -10,55 +10,63 @@ public class ConjuntoLibro extends Biblioteca {
 		grupos = new ArrayList<Biblioteca>();
 	}
 
-	private void addPalabrasClaves(Set palabrasclaves) {
-		this.palabrasClaves.addAll(palabrasclaves);
-	}
 
 	public void addGrupo(Biblioteca g) {
 		grupos.add(g);
-		this.addPalabrasClaves(g.getPalabraClaves());
+	}
+
+	public ArrayList<Biblioteca> getGrupos() {
+		return this.grupos;
 	}
 
 	public Set<String> getPalabraClaves() {
-		return Collections.unmodifiableSet(this.palabrasClaves);
+		HashSet<String> aux = new HashSet<>();
+		for(Biblioteca b: grupos) {
+			aux.addAll(b.getPalabraClaves());
+		}
+		return Collections.unmodifiableSet(aux);
 	}
 
 	public int cantidadLibros() {
 		int i = 0;
 		for (Biblioteca b : this.grupos) {
-			i = +this.cantidadLibros();
+			i += b.cantidadLibros();
 		}
 		return i;
 	}
 
 	@Override
 	public String toString() {
-		String aux = "";
+		String aux = this.getTitulo() + "\n";
 		for(Biblioteca b: grupos) {
 			aux += b.toString() + "\n";
 		}
 		return aux;
 	}
 
-	public ArrayList<Libro> buscar(Comparator condicion, CriterioBusqueda c) {
-		ArrayList<Libro> libroBusqueda = new ArrayList<Libro>();
+	public List<Libro> buscar(Comparator condicion, CriterioBusqueda c) {
+		List<Libro> libroBusqueda = new ArrayList<>();
 		for(Biblioteca b:this.grupos) {
 				libroBusqueda.addAll(b.buscar(condicion, c));
 		}
 		Collections.sort(libroBusqueda, condicion);
-		Collections.unmodifiableList(libroBusqueda);
-		return libroBusqueda;
+		return Collections.unmodifiableList(libroBusqueda);
 	}
 
 	@Override
-	public ArrayList<Biblioteca> copiaRestringida(CriterioBusqueda c) {
-		ArrayList<Biblioteca> aux = new ArrayList<Biblioteca>();
+	public Biblioteca copiaRestringida(CriterioBusqueda c) {
+		ConjuntoLibro aux = new ConjuntoLibro(this.getId(), this.getTitulo());
 		for (Biblioteca b : grupos) {
-			if(c.cumple(b))
-				aux.addAll(b.copiaRestringida(c));
+			Biblioteca biblioteca = b.copiaRestringida(c);
+			if(biblioteca != null) {
+				aux.addGrupo(b.copiaRestringida(c));
+			}
 		}
-		Collections.unmodifiableList(aux);
-		return aux;
+		if(aux.cantidadLibros() > 0)
+			return aux;
+		else {
+			return null;
+		}
 	}
 }
 
