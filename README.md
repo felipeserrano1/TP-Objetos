@@ -1,1 +1,1 @@
-# Trabajo Practico Especial - Programacion Orientada a Objetos (POO)
+# Trabajo Practico Especial - Programacion Orientada a Objetos 
