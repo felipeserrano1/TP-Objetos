@@ -2,7 +2,7 @@ package TrabajoPracticoEspecial;
 
 public class Main {
     public static void main(String[] args) {
-        Libro l1 = new Libro(1998, "LaEdidtorial", 200,1,"POOa");
+        Libro l1 = new Libro(1998, "LaEditorial", 200,1,"POO");
         l1.addAutores("Juan");
         l1.addAutores("Felipe");
         l1.addAutores("Fernando");
@@ -29,17 +29,9 @@ public class Main {
         l3.addPalabrasClaves("Programacion");
         l3.addPalabrasClaves("Agiles");
         l3.addPalabrasClaves("parcial");
-        l3.addPalabrasClaves("Programacion");
-        l3.addPalabrasClaves("Agiles");
         l3.addPalabrasClaves("casa");
-        l3.addPalabrasClaves("Programacion");
-        l3.addPalabrasClaves("Agiles");
         l3.addPalabrasClaves("perro");
-        l3.addPalabrasClaves("Programacion");
-        l3.addPalabrasClaves("Agiles");
         l3.addPalabrasClaves("pc");
-        l3.addPalabrasClaves("Programacion");
-        l3.addPalabrasClaves("Agiles");
         l3.addPalabrasClaves("gato");
 
         ConjuntoLibro c1 = new ConjuntoLibro(4, "Sistemas");
@@ -54,8 +46,8 @@ public class Main {
         //System.out.println(c2.cantidadLibros());
         //System.out.println(c2);
 
-        ConjuntoLibro c3 = new ConjuntoLibro(6,"Faculta");
-        Libro l4 = new Libro(2008, "LaEdidtorial", 400,7,"aaaaaaaaaaaaaaaaaaaaa");
+        ConjuntoLibro c3 = new ConjuntoLibro(6,"Facultad");
+        Libro l4 = new Libro(2008, "LaEditorial", 400,7,"aaaaaaaaaaaaaaaaaaaaa");
 
         l4.addPalabrasClaves("programacion");
         l4.addPalabrasClaves("perro");
@@ -66,12 +58,8 @@ public class Main {
         l4.addPalabrasClaves("auto");
         l4.addPalabrasClaves("perro");
         l4.addPalabrasClaves("auto");
-        l4.addPalabrasClaves("auto");
         l4.addPalabrasClaves("pc");
         l4.addPalabrasClaves("celular");
-        l4.addPalabrasClaves("perro");
-        l4.addPalabrasClaves("moneda");
-        l4.addPalabrasClaves("gato");
 
         c3.addGrupo(l4);
 
@@ -85,7 +73,7 @@ public class Main {
         System.out.println(c2.buscar(new OrdenamientoAnio(new OrdenamientoTitulo()), crit2));
         System.out.println(c2.buscar(new OrdenamientoTitulo(), critOR));
         System.out.println(c3.copiaRestringida(crit1));
-        BusquedaEditorial crit4 = new BusquedaEditorial("LaEdidtorial");
+        BusquedaEditorial crit4 = new BusquedaEditorial("LaEditorial");
         System.out.println(c3.buscar(new OrdenamientoTitulo(), crit4));
 
         ConjuntoEspecial c4 = new ConjuntoEspecial(8, "Especial");
