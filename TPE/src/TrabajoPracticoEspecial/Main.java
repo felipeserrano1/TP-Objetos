@@ -81,21 +81,22 @@ public class Main {
         BusquedaAnio crit2 = new BusquedaAnio(1995);
         BusquedaAnd critAND = new BusquedaAnd(crit1, crit2);
         BusquedaOr critOR = new BusquedaOr(crit1, crit2);
-        //System.out.println(c2.buscar(new OrdenamientoTitulo(), crit1));
-        //System.out.println(c2.buscar(new OrdenamientoAnio(new OrdenamientoTitulo()), crit2));
-        //System.out.println(c2.buscar(new OrdenamientoTitulo(), critOR));
-        //System.out.println(c3.copiaRestringida(crit1));
+        System.out.println(c2.buscar(new OrdenamientoTitulo(), crit1));
+        System.out.println(c2.buscar(new OrdenamientoAnio(new OrdenamientoTitulo()), crit2));
+        System.out.println(c2.buscar(new OrdenamientoTitulo(), critOR));
+        System.out.println(c3.copiaRestringida(crit1));
+        BusquedaEditorial crit4 = new BusquedaEditorial("LaEdidtorial");
+        System.out.println(c3.buscar(new OrdenamientoTitulo(), crit4));
 
-//        ConjuntoEspecial c4 = new ConjuntoEspecial(8, "Especial");
-//        c4.addGrupo(l1);
-//        c4.addGrupo(l2);
-//        c4.addGrupo(l3);
-//        c4.addGrupo(l4);
-//        //c4.addGrupo(c3);
-//        System.out.println(c4.getPalabraClaves());
+        ConjuntoEspecial c4 = new ConjuntoEspecial(8, "Especial");
+        c4.addGrupo(l1);
+        c4.addGrupo(l2);
+        c4.addGrupo(l3);
+        c4.addGrupo(l4);
+        c4.addGrupo(c3);
+        System.out.println(c4.getPalabraClaves());
 
         BusquedaAutor crit3 = new BusquedaAutor("Juan");
         System.out.println(c3.buscar(new OrdenamientoTitulo(), crit3));
-
     }
 }

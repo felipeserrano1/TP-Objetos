@@ -13,7 +13,7 @@ public class Libro extends Biblioteca {
 		super(id,Titulo);
 		this.anioPublicacion = anioPublicacion;
 		this.cantidadPaginas = cantidadPaginas;
-		this.Editorial = Editorial;
+		this.Editorial = Editorial.toLowerCase();
 		this.autores = new ArrayList<String>();
 		this.palabrasClaves = new HashSet<String>();
 	}

@@ -1,14 +1,14 @@
 package TrabajoPracticoEspecial;
 
 public class BusquedaCantidadPaginas implements CriterioBusqueda{
-    private int maxPalabras;
+    private int maxPaginas;
 
-    public BusquedaCantidadPaginas(int maxPalabras) {
-        this.maxPalabras = maxPalabras;
+    public BusquedaCantidadPaginas(int maxPaginas) {
+        this.maxPaginas = maxPaginas;
     }
 
     @Override
     public boolean cumple (Libro l) {
-        return l.getCantidadPaginas() < this.maxPalabras;
+        return l.getCantidadPaginas() < this.maxPaginas;
     }
 }
